@@ -1,3 +1,0 @@
-Mouse: 14 seconds
-Forar: 8 seconds
-Cheetah: 0.1 seconds
