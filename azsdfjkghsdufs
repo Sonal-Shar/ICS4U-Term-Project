@@ -1,0 +1,29 @@
+import tkinter as tk
+from tkinter import *
+
+window = Tk()
+
+    
+def login():
+    btn.grid_remove()
+    Label(window, text="First Name").grid(row=0)
+    Label(window, text="Last Name").grid(row=1)
+
+    e1 = Entry(window)
+    e2 = Entry(window)
+
+    e1.grid(row=0, column=1)
+    e2.grid(row=1, column=1)
+    print("First Name: %s\nLast Name: %s" % (e1.get(), e2.get()))
+    btn2 = Button(window, text="next").grid(column=10, row=3)
+
+    
+window.title("Matching Game")
+ 
+window.geometry('400x600')
+
+btn = Button(window, text="Games", command = login)
+
+btn.grid(column=1, row=0)
+
+window.mainloop()
