@@ -1,30 +1,35 @@
 import tkinter as tk
 from tkinter import *
 
+
+
 window = Tk()
 
 
 
 def login():
-    btn.grid_remove()
-    Label(window, text="First Name").grid(row=0)
+    btn.place_forget()
+    Label(window, text="First Name",).grid(row=0)
     Label(window, text="Last Name").grid(row=1)
+
 
     e1 = Entry(window)
     e2 = Entry(window)
 
     e1.grid(row=0, column=1)
     e2.grid(row=1, column=1)
+    
     print("First Name: %s\nLast Name: %s" % (e1.get(), e2.get()))
-    btn2 = Button(window, text="next",command=window.quit and window.destroy).grid(column=8, row=3)
+    btn2 = Button(window, text="next",command=window.quit and window.destroy)
+    btn2.grid(column=8, row=3)
 
 
 window.title("Main menu")
  
-window.geometry('350x200')
+window.geometry('1400x800')
    
-btn = Button(window, text="Login",command=login, height = 4, width = 6)
-btn.grid(column=1, row= 3)
+btn = Button(window, text="Login",font=40,command=login, height = 8, width = 20)
+btn.place(x=570, y=350) 
 
 window.mainloop()
 
@@ -84,6 +89,6 @@ if __name__ == "__main__":
     root = tk.Tk()
     main = MainView(root)
     main.pack(side="top", fill="both", expand=True)
-    root.wm_geometry("400x400")
+    root.wm_geometry('1400x800')
     root.mainloop()
 
