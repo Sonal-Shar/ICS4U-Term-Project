@@ -4,31 +4,36 @@ from tkinter import *
 
 
 window = Tk()
-
-
-
+   
 def login():
     btn.place_forget()
-    Label(window, text="First Name",).grid(row=0)
-    Label(window, text="Last Name").grid(row=1)
+    lab1= Label(window, text="Username",font=("Helvetica", 32))
+    lab1.place(x=350, y=300)
+    Label2=Label(window, text="Password", font=("Helvetica", 32))
+    Label2.place(x=350, y=350)
 
-
-    e1 = Entry(window)
-    e2 = Entry(window)
-
-    e1.grid(row=0, column=1)
-    e2.grid(row=1, column=1)
+    TextArea = Text(width = 26, height=1, font=("Helvetica", 26))
+    TextArea.place(x=570, y=300)
     
-    print("First Name: %s\nLast Name: %s" % (e1.get(), e2.get()))
-    btn2 = Button(window, text="next",command=window.quit and window.destroy)
-    btn2.grid(column=8, row=3)
+    TextArea2 = Text(width = 26, height=1, font=("Helvetica", 26))
+    TextArea2.place(x=570, y=350)
+
+    #e1 = Entry(window)
+    #e2 = Entry(window)
+
+    #e1.grid(row=0, column=1)
+    #e2.grid(row=1, column=1)
+    
+    #print("First Name: %s\nLast Name: %s" % (e1.get(), e2.get()))
+    btn2 = Button(window, text="Next",font=("Helvetica",15),command=window.quit and window.destroy,height = 6, width = 18)
+    btn2.place(x=1030,y=510)
 
 
 window.title("Main menu")
  
 window.geometry('1400x800')
    
-btn = Button(window, text="Login",font=40,command=login, height = 8, width = 20)
+btn = Button(window, text="Login",font=("Helvetica",15),command=login, height = 6, width =18)
 btn.place(x=570, y=350) 
 
 window.mainloop()
