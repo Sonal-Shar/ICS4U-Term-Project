@@ -1,10 +1,11 @@
 import tkinter as tk
 from tkinter import *
 
-
-
 window = Tk()
-   
+  
+f = open("logs.txt","r")
+line = f.readlines()
+
 def login():
     btn.place_forget()
     lab1= Label(window, text="Username",font=("Helvetica", 32))
@@ -18,6 +19,7 @@ def login():
     TextArea2 = Text(width = 26, height=1, font=("Helvetica", 26))
     TextArea2.place(x=570, y=350)
 
+  
     #e1 = Entry(window)
     #e2 = Entry(window)
 
@@ -27,6 +29,8 @@ def login():
     #print("First Name: %s\nLast Name: %s" % (e1.get(), e2.get()))
     btn2 = Button(window, text="Next",font=("Helvetica",15),command=window.quit and window.destroy,height = 6, width = 18)
     btn2.place(x=1030,y=510)
+    if TextArea == line:
+        print('fdfd')
 
 
 window.title("Main menu")
@@ -36,9 +40,14 @@ window.geometry('1400x800')
 btn = Button(window, text="Login",font=("Helvetica",15),command=login, height = 6, width =18)
 btn.place(x=570, y=350) 
 
+
+
+    
 window.mainloop()
 
+        
 
+    
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
