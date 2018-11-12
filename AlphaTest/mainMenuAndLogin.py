@@ -81,6 +81,7 @@ class mainMenuAndLogin():
             #window.destroy()
 def main():
     window.geometry('1400x800')
+    window.resizable(False, False)
     mainMenuAndLogin.mainMenuGUI()
     #mainMenuAndLogin.loginUI()
 

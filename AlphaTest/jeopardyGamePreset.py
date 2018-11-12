@@ -2,18 +2,23 @@ import tkinter as tk
 from tkinter import *
 from PIL import Image, ImageTk
 import time
-#master = Tk()
+master = Tk()
 points1 = 0
 points2 = 0
 points3 = 0
 points4 = 0
-
+btnQ = 0
+qLs = open('questions.txt').read().splitlines()
+pLs = open('answers.txt').read().splitlines()
 class question(Frame):
-    def initUI():
+    def question1():
+        
         window = Tk()
         window.geometry("1400x800")
         window.resizable(False, False)
         window.title("Question")
+        qShow = Label(window,text = qLs[0], font = ("Helvetica",32))
+        qShow.place(x = 600, y = 10)
         
         
 class Jeopardy(Frame):
@@ -47,7 +52,7 @@ class Jeopardy(Frame):
         BtnImg4 = ImageTk.PhotoImage(image4)
         BtnImg5 = ImageTk.PhotoImage(image5)
         
-        c1r1 = Button(master, image = BtnImg1, command = screen2, height = 86, width = 185).place(x = 94, y = 285)
+        c1r1 = Button(master, image = BtnImg1, command = question.question1, height = 86, width = 185).place(x = 94, y = 285)
         c1r2 = Button(master, image = BtnImg2, command = screen2, height = 86, width = 185).place(x = 94, y = 375)
         c1r3 = Button(master, image = BtnImg3, command = screen2, height = 86, width = 185).place(x = 94, y = 465)
         c1r4 = Button(master, image = BtnImg4, command = screen2, height = 86, width = 185).place(x = 94, y = 555)
@@ -89,9 +94,9 @@ class Jeopardy(Frame):
    
 def main():
    # popUpGame = popUp()
-    #game = Jeopardy.initUI()
-    game = question.initUI()
-    #master.mainloop()  
+    game = Jeopardy.initUI()
+    #game = question.initUI()
+    master.mainloop()  
 
 if __name__ == '__main__':
     main()
