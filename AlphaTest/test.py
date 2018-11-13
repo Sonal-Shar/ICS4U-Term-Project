@@ -1,37 +1,36 @@
-
 import tkinter as tk
+from tkinter import *
 from PIL import Image, ImageTk
-button_flag = True
+import time
 
-def click():
-    """
-    respond to the button click
-    """
-    global button_flag
-    # toggle button colors as a test
-    if button_flag:
-        button1.config(bg="white")
-        button_flag = False
-    else:
-        button1.config(bg="green")
-        button_flag = True
+qLs = open('questions.txt').read().splitlines()
+pLs = open('answers.txt').read().splitlines()
+class question(Frame):
+    window = tk()
+    def __init__(self):
+        tk.Tk.__init__(self)
+        self.label = tk.Label(self, text="", width=10)
+        self.label.pack()
+        self.remaining = 0
+        self.countdown(10)
 
-root = tk.Tk()
+    def countdown(self, remaining = None):
+        if remaining is not None:
+            self.remaining = remaining
 
-# create a frame and pack it
-frame1 = tk.Frame(root)
-frame1.pack(side=tk.TOP, fill=tk.X)
+        if self.remaining <= 0:
+            self.label.configure(text="time's up!")
+        else:
+            self.label.configure(text="%d" % self.remaining)
+            self.remaining = self.remaining - 1
+            self.after(1000, self.countdown)
 
-# pick a (small) image file you have in the working directory ...
-photo1 = tk.PhotoImage(file="200btn.png")
 
-# create the image button, image is above (top) the optional text
-button1 = tk.Button(frame1, compound=tk.TOP, width=155, height=55, image=photo1,
-    text="optional text", bg='green', command=click)
-button1.pack(side=tk.LEFT, padx=2, pady=2)
 
-# save the button's image from garbage collection (needed?)
-button1.image = photo1
 
-# start the event loop
-root.mainloop()
+   
+def main():
+    app = question.question1()
+    window.mainloop()
+if __name__ == '__main__':
+    main()

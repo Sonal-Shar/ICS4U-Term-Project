@@ -8,17 +8,49 @@ points2 = 0
 points3 = 0
 points4 = 0
 btnQ = 0
+timesUp = False
 qLs = open('questions.txt').read().splitlines()
 pLs = open('answers.txt').read().splitlines()
+
 class question(Frame):
+    class ExampleApp(tk.Tk):
+        def __init__(self):
+            tk.Tk.__init__(self)
+            self.resizable(False,False)
+            self.label = tk.Label(self, text="", width=10)
+            self.label.pack()
+            self.remaining = 0
+            self.countdown(10)
+
+        def countdown(self, remaining = None):
+            if remaining is not None:
+                self.remaining = remaining
+
+            if self.remaining <= 0:
+                self.destroy()
+                timesUp = True
+            else:
+                self.label.configure(text="%d" % self.remaining)
+                self.remaining = self.remaining - 1
+                self.after(1000, self.countdown)
+
     def question1():
         
         window = Tk()
         window.geometry("1400x800")
         window.resizable(False, False)
         window.title("Question")
-        qShow = Label(window,text = qLs[0], font = ("Helvetica",32))
+
+        window.configure(background='#2C5EB3')
+
+        
+        qShow = Label(window,text = qLs[0], font = ("Helvetica",32), bg = '#2C5EB3', fg = 'white')
         qShow.place(x = 600, y = 10)
+
+        TextArea1 = Text(window, width = 26, height=1, font=("Helvetica", 26))
+        TextArea1.place(x = 200, y = 600)
+        app = question.ExampleApp()
+
         
         
 class Jeopardy(Frame):

@@ -1,18 +1,25 @@
 import tkinter as tk
 from tkinter import *
+from PIL import Image, ImageTk
 usernameList = open('usernames.txt').read().splitlines() #Collects data from the text file and stores it in an array
 passwordList = open('passwords.txt').read().splitlines() #Collects data from the text file and stores it in an array
-
+guestOrTeacher = 0
 window = Tk()
-TextArea = Text(width = 26, height=1, font=("Helvetica", 26))
-TextArea2 = Text(width = 26, height=1, font=("Helvetica", 26))
+
 
 class mainMenuAndLogin():
     def mainMenuGUI():
+        
         global btn
         window.title("Main Menu")
+        image = Image.open("mainMenuScreen.png")
+        photo = ImageTk.PhotoImage(image)
+        label = Label(image=photo)
+        label.image = photo # keep a reference!
+        label.place(x = 0, y = 0)
+        
         btn= Button(window, text="Login",font=("Helvetica",15),command=mainMenuAndLogin.loginGUI, height = 6, width =18)
-        btn.place(x=570, y=350)
+        btn.place(x=595, y=350)
 
         
     def loginGUI():
@@ -25,7 +32,8 @@ class mainMenuAndLogin():
         lab1.place(x=350, y=300)
         Label2=Label(window, text="Password", font=("Helvetica", 32))
         Label2.place(x=350, y=350)
-
+        TextArea = Text(width = 26, height=1, font=("Helvetica", 26))
+        TextArea2 = Text(width = 26, height=1, font=("Helvetica", 26))
         TextArea.place(x=570, y=300)
 
         TextArea2.place(x=570, y=350)
@@ -58,6 +66,10 @@ class mainMenuAndLogin():
                     if passwordList[i] == passwordInput:
                         passwordSpot = 1
                         if usernameSpot == passwordSpot:
+                            if i == 0:
+                                guestOrTeacher = 1
+                            else:
+                                guestOrTeacher = 2
                             window.destroy()
                             break
                         else:
