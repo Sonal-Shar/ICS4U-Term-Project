@@ -17,7 +17,7 @@ class question(Frame):
         def __init__(self):
             tk.Tk.__init__(self)
             self.resizable(False,False)
-            self.label = tk.Label(self, text="", width=10)
+            self.label = tk.Label(self, text="", width=10, font = ("Helvetica",32))
             self.label.pack()
             self.remaining = 0
             self.countdown(10)
@@ -49,6 +49,7 @@ class question(Frame):
 
         TextArea1 = Text(window, width = 26, height=1, font=("Helvetica", 26))
         TextArea1.place(x = 200, y = 600)
+        checkIfRight = Button(window, image = BtnImg2, command = screen2, height = 86, width = 185).place(x = 94, y = 375)
         app = question.ExampleApp()
 
         

@@ -73,17 +73,20 @@ class mainMenuAndLogin():
                             window.destroy()
                             break
                         else:
-                            print("Incorrect username or password. Please try again.")
+                            error = Label(window, text="Incorrect username or password. Please try again", font=("Helvetica", 22), fg = 'red')
+                            error.place(x = 200, y = 700)
                             break
                     else:
                         tempPassVar -= 1
                         if tempPassVar == 0:
-                            print("Incorrect username or password. Please try again.")
+                            error = Label(window, text="Incorrect username or password. Please try again", font=("Helvetica", 22), fg = 'red')
+                            error.place(x = 200, y = 700)
                         
             else:
                 tempUserVar -= 1
                 if tempUserVar == 0:
-                    print("Incorrect username or password. Please try again.")
+                    error = Label(window, text="Incorrect username or password. Please try again", font=("Helvetica", 22), fg = 'red')
+                    error.place(x = 200, y = 700)
                 
                 
             
