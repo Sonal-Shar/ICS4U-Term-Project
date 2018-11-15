@@ -1,36 +1,27 @@
-import tkinter as tk
 from tkinter import *
-from PIL import Image, ImageTk
-import time
 
-qLs = open('questions.txt').read().splitlines()
-pLs = open('answers.txt').read().splitlines()
-class question(Frame):
-    window = tk()
-    def __init__(self):
-        tk.Tk.__init__(self)
-        self.label = tk.Label(self, text="", width=10)
-        self.label.pack()
-        self.remaining = 0
-        self.countdown(10)
+class Application(Frame):
 
-    def countdown(self, remaining = None):
-        if remaining is not None:
-            self.remaining = remaining
+    def __init__(self, master):
+        super(Application, self).__init__(master)
+        self.grid()
+        self.bttn_clicks = 0
+        self.create_widget()
 
-        if self.remaining <= 0:
-            self.label.configure(text="time's up!")
-        else:
-            self.label.configure(text="%d" % self.remaining)
-            self.remaining = self.remaining - 1
-            self.after(1000, self.countdown)
+    def create_widget(self):
+        self.bttn = Button(self)
+        self.bttn['text'] = "Total Clicks: 0"
+        self.bttn['command'] = self.update_count
+        self.bttn.grid()
 
+    def update_count(self):
+        self.bttn_clicks += 1
+        self.bttn['text'] = "Total Clicks: " + str(self.bttn_clicks)
 
+root = Tk()
+root.title("Click Counter")
+root.geometry('200x50')
 
+app = Application(root)
 
-   
-def main():
-    app = question.question1()
-    window.mainloop()
-if __name__ == '__main__':
-    main()
+root.mainloop()    
